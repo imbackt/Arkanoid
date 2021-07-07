@@ -10,7 +10,6 @@ import ktx.ashley.mapperFor
 
 class Box2DComponent : Component, Pool.Poolable {
     lateinit var body: Body
-
     override fun reset() {
         body.world.destroyBody(body)
         body.userData = null
@@ -21,6 +20,6 @@ class Box2DComponent : Component, Pool.Poolable {
     }
 }
 
-val Entity.box2DComponent: Box2DComponent
+val Entity.b2DCmp: Box2DComponent
     get() = this[Box2DComponent.MAPPER]
-        ?: throw GdxRuntimeException("Box2DComponent for entity [$this] is null!")
+        ?: throw GdxRuntimeException("Box2DComponent for entity '$this' is null!")

@@ -7,12 +7,15 @@ import com.badlogic.gdx.utils.Pool
 import ktx.ashley.get
 import ktx.ashley.mapperFor
 
-
 class PlayerComponent : Component, Pool.Poolable {
     var lives = 3
+    var width = 1f
+    var isGameStarted = false
 
     override fun reset() {
         lives = 3
+        width = 1f
+        isGameStarted = false
     }
 
     companion object {
@@ -20,6 +23,6 @@ class PlayerComponent : Component, Pool.Poolable {
     }
 }
 
-val Entity.playerComponent: PlayerComponent
+val Entity.playerCmp: PlayerComponent
     get() = this[PlayerComponent.MAPPER]
-        ?: throw GdxRuntimeException("PlayerComponent for entity[$this] is null!")
+        ?: throw GdxRuntimeException("PlayerComponent for entity '$this' is null!")
