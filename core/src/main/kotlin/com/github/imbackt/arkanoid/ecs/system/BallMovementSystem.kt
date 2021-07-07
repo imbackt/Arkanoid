@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.physics.box2d.*
 import com.github.imbackt.arkanoid.ecs.component.*
+import ktx.ashley.EngineEntity
 import ktx.ashley.allOf
 import ktx.math.vec2
 import kotlin.math.abs
@@ -38,6 +39,13 @@ class BallMovementSystem(
             } else {
                 ballBody.applyForce(vec2(abs(difference * 200f), 250f), ballBody.worldCenter, true)
             }
+        } else if (contact.fixtureA.userData is EngineEntity || contact.fixtureB.userData is EngineEntity) {
+            val brickEngineEntity = if (contact.fixtureA.userData is EngineEntity) {
+                contact.fixtureA.userData as EngineEntity
+            } else {
+                contact.fixtureB.userData as EngineEntity
+            }
+            engine.removeEntity(brickEngineEntity.entity)
         }
     }
 

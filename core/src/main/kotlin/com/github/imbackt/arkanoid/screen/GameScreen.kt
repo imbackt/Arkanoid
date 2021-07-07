@@ -14,6 +14,7 @@ class GameScreen(game: Arkanoid) : AbstractScreen(game) {
         engineController.spawnWalls()
         engineController.spawnFloor()
         engineController.spawnInitialBall()
+        engineController.spawnBricks()
     }
 
     override fun render(delta: Float) {
