@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.github.imbackt.arkanoid.ecs.EngineController
+import com.github.imbackt.arkanoid.ecs.system.InputSystem
 import com.github.imbackt.arkanoid.screen.AbstractScreen
 import com.github.imbackt.arkanoid.screen.GameScreen
 import ktx.app.KtxGame
@@ -38,5 +39,6 @@ class Arkanoid : KtxGame<AbstractScreen>() {
     override fun dispose() {
         super.dispose()
         world.dispose()
+        box2DDebugRenderer.dispose()
     }
 }

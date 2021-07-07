@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.get
 import ktx.ashley.mapperFor
+import ktx.box2d.fixture
 
 class Box2DComponent : Component, Pool.Poolable {
     lateinit var body: Body
