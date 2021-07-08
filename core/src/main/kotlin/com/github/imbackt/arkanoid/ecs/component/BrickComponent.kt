@@ -9,9 +9,11 @@ import ktx.ashley.mapperFor
 
 class BrickComponent : Component, Pool.Poolable {
     var hitPoints = 1
+    var hasPowerUP = false
 
     override fun reset() {
         hitPoints = 1
+        hasPowerUP = false
     }
 
     companion object {
@@ -19,6 +21,6 @@ class BrickComponent : Component, Pool.Poolable {
     }
 }
 
-val Entity.brickCmp: BrickComponent
+val Entity.brickComponent: BrickComponent
     get() = this[BrickComponent.MAPPER]
         ?: throw GdxRuntimeException("BrickComponent for entity '$this' is null!")

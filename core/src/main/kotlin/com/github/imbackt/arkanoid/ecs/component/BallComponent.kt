@@ -6,14 +6,15 @@ import com.badlogic.gdx.utils.GdxRuntimeException
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.get
 import ktx.ashley.mapperFor
+import ktx.math.vec2
 
 class BallComponent : Component, Pool.Poolable {
-    var isInitialBall = false
-    var speed = 0f
+    var initialBall = true
+    val speed = vec2(1f, 1f)
 
     override fun reset() {
-        isInitialBall = false
-        speed = 0f
+        initialBall = true
+        speed.set(1f, 1f)
     }
 
     companion object {
@@ -21,6 +22,6 @@ class BallComponent : Component, Pool.Poolable {
     }
 }
 
-val Entity.ballCmp: BallComponent
+val Entity.ballComponent: BallComponent
     get() = this[BallComponent.MAPPER]
-        ?: throw GdxRuntimeException("BallComponent of entity '$this' is null!")
+        ?: throw GdxRuntimeException("BallComponent for entity '$this' is null!")

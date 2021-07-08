@@ -1,20 +1,14 @@
 package com.github.imbackt.arkanoid.screen
 
-import com.badlogic.ashley.core.PooledEngine
+import com.badlogic.gdx.graphics.g2d.Batch
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.github.imbackt.arkanoid.Arkanoid
-import com.github.imbackt.arkanoid.ecs.EngineController
 import ktx.app.KtxScreen
 
 abstract class AbstractScreen(
     private val game: Arkanoid,
-    private val uiViewport: Viewport = game.uiViewport,
-    private val gameViewport: Viewport = game.gameViewport,
-    protected val engine: PooledEngine = game.engine,
-    protected val engineController: EngineController = game.engineController
-) : KtxScreen {
-    override fun resize(width: Int, height: Int) {
-        uiViewport.update(width, height, true)
-        gameViewport.update(width, height, true)
-    }
-}
+    val batch: SpriteBatch = game.batch,
+    val uiViewport: Viewport = game.uiViewport,
+    val gameViewport: Viewport = game.gameViewport,
+) : KtxScreen
